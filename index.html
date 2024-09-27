@@ -1,120 +1,51 @@
 <html>
 <head>
 	<title>sanzoid.com</title>
-	<!--<meta charset="UTF-8">-->
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="./css/main2.css">
-	<link href='https://fonts.googleapis.com/css?family=Coming+Soon|Cabin+Sketch' rel='stylesheet' type='text/css'>	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<script src="./js/main.js"></script>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Coming+Soon|Cabin+Sketch' rel='stylesheet' type='text/css'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	
+	<script src="./js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
-
 </head>
 
 <body>
-	
-<!-- START: banner -->
-<div id="banner" class="global">
-	<!-- banner left --><!--<div class="left"></div>-->
-	<!-- banner mid --><a href="./index.html"><div class="mid"></div></a>
-	<!-- banner right --><!--<div class="right"></div>-->
-</div>
-<!-- END: banner -->
 
-<div id="navbar-container">
-<!-- START: navbar -->
-<div id="navbar" class="global">
-	<ul class="menu">
-		<li class="page">
-			<a class="menu-link" href="/pages/hobbies/hobbies.php">page</a>
-			<ul class="submenu">
-				<li class=""><a class="menu-link" href="/pages/hobbies/tv.php">page</a></li>
-			</ul>
-		</li>
-		<li class="page">
-			<a class="menu-link" href="/pages/art/art.php">page</a>
-		</li>
-		<li class="page">
-			<a class="menu-link" href="/pages/projects/projects.php">page</a>
-		</li>
-		<li class="home">
-			<a href="/"><div class="home-logo"></div><span class="menu-link">home</span></a>
-		</li>
-		<li class="page">
-			<a class="menu-link" href="/pages/thoughts/thoughts.php">page</a>
-		</li>
-		<li class="page">
-			<a class="menu-link" href="/pages/quotes/quotes.php">page</a>
-		</li>
-		<li class="page">
-			<a class="menu-link" href="/pages/things/things.php">page</a>
-		</li>
-	</ul>
-</div>
-<!-- END: navbar -->
-<!--<div class="menu-message null">You won't find anything there</div>-->
+<!-- Template Placeholder -->
+<div id="template-full"></div>
+
+<!-- Body Content -->
+<div id="body-content">
+	<h1 class="content-page-title">Hello World</h1>
 </div>
 
-<!-- START: content -->
-<div id="content" class="global">
-<!-- start: margin-wrapper -->
-<div class="margin-wrapper">
+<script>
+	$(function(){
+		var replaceDiv = function($id, $file, $finish) { 
+			$.get($file, function(data) {
+			     $($id).replaceWith(data);
+			     $finish();
+			}); 
+		};
 
-	<!-- start: content body -->
-	<div class="body">
-		<!-- title--><h1 class="content-page-title">Hello World</h1>
+		var replaceDivWithHTML = function($id, $element) {
+			$($id).replaceWith($($element).detach().html());
+		};
+		
+		replaceDiv("#template-full", "/template/template.html", function() {
+			replaceDiv("#template-banner", "/template/banner.html");
+			replaceDiv("#template-navbar", "/template/navbar.html");
+			replaceDiv("#template-content", "/template/content.html", function() {
+				replaceDivWithHTML("#body-placeholder", "#body-content");
+			});
+			replaceDiv("#template-sidebar", "/template/sidebar.html");
+			replaceDiv("#template-footer", "/template/footer.html");
+		});
+	});
+</script>
 
-	</div>
-	<!-- end: content body -->
-</div>
-<!-- end: margin-wrapper -->
-</div>
-<!-- END: content -->
-
-<!-- START: profile -->
-<div id="profile" class="global">
-	<!-- start: margin-wrapper -->
-	<div class="margin-wrapper">
-
-	<!-- start: about me -->
-	<div class="aboutme">
-		<h1>About Me</h1>
-		<div class="profileimage"></div>
-		<p>Welcome to my kingdom.</p>
-	</div>
-	<!-- end: about me -->
-
-	<!-- start: contact info -->
-	<div class="contactinfo">
-		<h1>Contact Info</h1>
-		<p>For emergencies, contact 9-1-1.</p>
-	</div>
-	<!-- end: contact info -->
-
-	<!-- start: Handles -->
-	<div id="handles">
-		<h2>The Picture of Sandy Ho</h2>
-		<ul>
-			<li class=""><a href="https://github.com/sanzoid" target="_blank"><img src="/images/main/handle_icons/icon_github.png" /></a></li>
-		</ul>
-	</div>
-	<!-- end: Handles -->
-
-	</div>
-	<!-- end: margin-wrapper -->
-
-</div>
-<!-- END: Profile-->
-<div id="credits">Background: <em>Obsidian Rainbow</em></div>
-
-<!-- START: footer -->
-<div id="footer" class="global">
-	<div class="lastmodified">TODO: last modified</div>
-	<div class="siggy">SANZOID.COM</div>
-</div>
-<!-- END: footer -->
 </body>
 </html>
