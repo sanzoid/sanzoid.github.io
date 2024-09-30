@@ -14,36 +14,69 @@
 
 <body>
 
-<!-- Template Placeholder -->
+<!-- START: TEMPLATE PLACEHOLDER DIV - this will be replaced by the template -->
 <div id="template-full"></div>
+<!-- END: TEMPLATE PLACEHOLDER DIV -->
 
-<!-- Body Content -->
+<!-- START: BODY CONTENT DIV - the content inside will replace #body-placeholder in the template -->
 <div id="body-content">
 	<h1 class="content-page-title">Hello World</h1>
+
+	<p id="file-test-txt"></p>
 </div>
+<!-- END: BODY CONTENT DIV -->
 
 <script>
 	$(function(){
-		var replaceDiv = function($id, $file, $finish) { 
-			$.get($file, function(data) {
-			     $($id).replaceWith(data);
-			     $finish();
+
+		function replaceDivWithHTMLFile(id, file, finish) {
+			$.get(file, function(data) {
+			     $(id).replaceWith(data);
+			     finish();
 			}); 
 		};
 
-		var replaceDivWithHTML = function($id, $element) {
-			$($id).replaceWith($($element).detach().html());
+		function replaceDivWithHTMLElement(id, element) {
+			$(id).replaceWith($(element).detach().html());
+		};
+
+		function setLastModifiedOn(elementId) {
+			let locale = 'en-CA';
+			var lastModifiedDate = new Date(document.lastModified);
+			var lastModifiedDateString = lastModifiedDate.toLocaleDateString(locale);
+			document.getElementById(elementId).innerHTML = lastModifiedDateString;
+		};
+
+		// get non-authenticated downloadable url and set it as the elementId's innerHTML 
+		function getUrlAndSet(url, elementId) {
+			$.get(url)
+			.done(function(result) {
+				document.getElementById(elementId).innerHTML = result;
+			})
+			.fail(function(error){
+				console.log(error);
+			});
 		};
 		
-		replaceDiv("#template-full", "/template/template.html", function() {
-			replaceDiv("#template-banner", "/template/banner.html");
-			replaceDiv("#template-navbar", "/template/navbar.html");
-			replaceDiv("#template-content", "/template/content.html", function() {
-				replaceDivWithHTML("#body-placeholder", "#body-content");
+		// load the template's html sections, then replace the content body with this page's content 
+		// #template-full 
+		//	#template-<section> 
+		//   #body-placeholder 
+		replaceDivWithHTMLFile("#template-full", "/template/template.html", function() {
+			replaceDivWithHTMLFile("#template-banner", "/template/banner.html");
+			replaceDivWithHTMLFile("#template-navbar", "/template/navbar.html");
+			replaceDivWithHTMLFile("#template-content", "/template/content.html", function() {
+				replaceDivWithHTMLElement("#body-placeholder", "#body-content");
 			});
-			replaceDiv("#template-sidebar", "/template/sidebar.html");
-			replaceDiv("#template-footer", "/template/footer.html");
+			replaceDivWithHTMLFile("#template-sidebar", "/template/sidebar.html");
+			replaceDivWithHTMLFile("#template-footer", "/template/footer.html", function() {
+				setLastModifiedOn("footer-last-modified"); 
+			});
 		});
+
+		getUrlAndSet(
+			"https://dl.dropbox.com/scl/fi/us6gn43hurmry2nlbcw3u/test.txt?rlkey=620tf3x71becx5d4g357khbee&e=1&st=vgis3gsx&dl=1",
+			"file-test-txt");
 	});
 </script>
 
