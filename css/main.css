@@ -857,3 +857,46 @@ div#favlist-sim img {
 div#favlist-note img {
 	max-width: 400px;
 }
+
+/*********** New stuff *********************/
+
+/*div#test-box {
+	padding: 10px 20px;
+
+	background-color: rgba(235, 232, 219, 1.0);
+	border-style: none none none none;
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 0px;
+	border-color: black;
+	box-shadow: 0 0 0 5px white, -10px 10px 0 0 rgba(0, 72, 181, 1.0);
+}*/
+
+div#test-box-container {
+	/*background-color: lightblue;*/
+	padding: 100px;
+}
+
+div#test-box {
+	padding: 10px 25px;
+	/*background-color: white;
+	border-width: 5px;
+	box-shadow: 0 0 0 4px black inset, 0 0px 0 2px white, -5px 5px 0 0px black, 5px -5px 0 0px black;*/
+
+	/*box-shadow: 0 0 0 2px #c46bff, 0 0 0 4px #008cff, 0 0 0 6px #00ff5e, 0 0 0 8px #ffea00, 0 0 0 10px #ff8800, 0 0 0 12px #ff0000; */
+
+	background-color: #fffefa;
+	border-style: dashed;
+	border-color: #008cff;
+	border-color: #424242 !important;
+	border-width: 1px;
+	border-radius: 0.5em;
+	box-shadow: 0 0 0 4px white, 0 0 0 5px #424242, 0 0 15px 0px #424242;
+}
+
+div.body, div#profile {
+/*	padding: 10px 25px;
+	background-color: white;
+	border-width: 5px;
+	box-shadow: 0 0 0 4px black inset, 0 0px 0 2px white, -5px 5px 0 0px black, 5px -5px 0 0px black;*/
+}

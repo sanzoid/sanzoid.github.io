@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	
 	<script src="./js/main.js"></script>
-	<link rel="stylesheet" type="text/css" href="./css/main.css">
+	<link rel="stylesheet" type="text/css" href="./css/crafty-theme.css">
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
@@ -21,8 +21,11 @@
 <!-- START: BODY CONTENT DIV - the content inside will replace #body-placeholder in the template -->
 <div id="body-content">
 	<h1 class="content-page-title">Hello World</h1>
-
-	<p id="file-test-txt"></p>
+	<div id="test-box-container">
+	<div id="test-box">
+		<p id="file-test-txt">Loading...</p>
+	</div>
+	</div>
 </div>
 <!-- END: BODY CONTENT DIV -->
 
@@ -66,11 +69,11 @@
 			replaceDivWithHTMLFile("#template-banner", "/template/banner.html");
 			replaceDivWithHTMLFile("#template-navbar", "/template/navbar.html");
 			replaceDivWithHTMLFile("#template-content", "/template/content.html", function() {
-				replaceDivWithHTMLElement("#body-placeholder", "#body-content");
+				replaceDivWithHTMLElement("#content-body-placeholder", "#body-content");
 			});
-			replaceDivWithHTMLFile("#template-sidebar", "/template/sidebar.html");
-			replaceDivWithHTMLFile("#template-footer", "/template/footer.html", function() {
-				setLastModifiedOn("footer-last-modified"); 
+			replaceDivWithHTMLFile("#template-footer", "/template/footer.html");
+			replaceDivWithHTMLFile("#template-corners", "/template/corners.html", function() {
+				setLastModifiedOn("corner-bottom-left"); 
 			});
 		});
 
