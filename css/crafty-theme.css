@@ -1,0 +1,82 @@
+/**************************** START: NAVBAR ***************************************/
+
+div#navbar {	/*list container */
+	font-size: 14px;
+	font-family: "Jua", sans-serif;
+}
+
+
+div#navbar ul.menu {	/* list */ 
+	width: 100%;
+	max-width: 931px;
+	margin: 0 auto;
+	padding: 0;
+
+	color: #424242;
+	background-color: #fffefa;
+	border-style: dashed;
+	border-color: #424242;
+	border-width: 1px;
+	border-radius: 0.5em;
+	box-shadow: 0 0 0 4px #fffefa, 0 0 0 5px #424242;
+
+	text-align: center;
+}
+
+div#navbar ul.menu > li {	/* main menu item block */ 
+	display: inline-block;	/* makes it one line */
+	width: 13%;
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+	
+}
+
+div#navbar a.menu-link {
+	color: #424242;
+	text-transform: lowercase;
+	text-decoration: none;
+	display: block;
+	padding: 15px 0;
+}
+
+div#navbar ul.menu > li > ul.submenu {	/* submenu */	
+	position: absolute;
+	padding: 0;
+	padding: 0 10px 10px 10px;
+	margin-top: 0px;	/*depends on padding of main menu item */
+	margin-left: -20px;
+	background-color: transparent;
+
+	/* hide dropdown menu */
+	display: none;
+}
+
+div#navbar ul.menu > li:hover ul.submenu {
+	/* show dropdown on hover */
+	display: block;
+}
+
+div#navbar ul.menu > li > ul.submenu > li{	/* submenu menu item */
+	list-style: none;
+	width: 143px;
+	background-color: #fffefa;
+}
+
+
+/* home button in the middle */
+div#navbar ul.menu li.home span.menu-link { display: none; }
+div#navbar ul.menu li.home .home-logo {	/* home logo */
+	position: absolute;
+	z-index: 100;
+	left: 50%;	/* position it in the middle. */
+	margin-left: -25px;	/* half of width */
+	margin-top: -30px;	/* move it up a bit to center  */
+	width: 50px;
+	height: 50px;
+	background-image: url('../images/main/logo/sandig_100.png');
+	background-size: 100%;
+}
+
+
+/**************************** END: NAVBAR ***************************************/
