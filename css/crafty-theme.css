@@ -1,5 +1,11 @@
 /**************************** START: NAVBAR ***************************************/
 
+div#navbar-container {
+	width: 100%;
+	max-width: 931px;
+	margin:  auto;
+}
+
 div#navbar {	/*list container */
 	font-size: 14px;
 	font-family: "Jua", sans-serif;
@@ -7,8 +13,8 @@ div#navbar {	/*list container */
 
 
 div#navbar ul.menu {	/* list */ 
-	width: 100%;
-	max-width: 931px;
+	w/*idth: 100%;
+	max-width: 931px;*/
 	margin: 0 auto;
 	padding: 0;
 
@@ -80,3 +86,40 @@ div#navbar ul.menu li.home .home-logo {	/* home logo */
 
 
 /**************************** END: NAVBAR ***************************************/
+ 
+/**************************** START: CONTENT ***************************************/
+div#content, div#footer {
+	margin: 50px auto;
+	max-width: 931px;
+
+  	color: #424242;
+	background-color: #fffefa;
+	border-style: dashed;
+	border-color: #424242;
+	border-width: 1px;
+	border-radius: 0.5em;
+	box-shadow: 0 0 0 4px #fffefa, 0 0 0 5px #424242;
+
+	font-family: "Jua", sans-serif;
+}
+
+div.margin-wrapper {
+	margin: 15px 25px 40px 25px;
+}
+
+/**************************** END: CONTENT ***************************************/
+
+/**************************** START: FOOTER ***************************************/
+
+div#aboutme, div#contactinfo, div#handles {
+	display: inline-block;
+	width: 32%;
+	vertical-align: top;
+}
+
+div#aboutme > h1, div#contactinfo > h1, div#handles > h1 {
+	font-size: 18px;
+}
+
+/**************************** END: FOOTER ***************************************/
+

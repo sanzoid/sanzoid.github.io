@@ -18,20 +18,25 @@
 
 <body>
 
-<!-- START: TEMPLATE PLACEHOLDER DIV - this will be replaced by the template -->
-<div id="template-full"></div>
-<!-- END: TEMPLATE PLACEHOLDER DIV -->
 
-<!-- START: BODY CONTENT DIV - the content inside will replace #body-placeholder in the template -->
+<div id="template-full"><!-- TEMPLATE PLACEHOLDER DIV - this will be replaced by the template --></div>
+
+<!-- todo: remove these comments with Javascript -->
+<!-- [TEMPLATE] TITLE CONTENT DIV - the title inside will replace #content-title-placeholder in the template -->
+<div id="page-title">index.html</div>
+
 <div id="body-content">
-	<h1 class="content-page-title">Hello World</h1>
+	<!-- START: BODY CONTENT DIV - the content inside will replace #content-body-placeholder in the template -->
 	<div id="test-box-container">
 	<div id="test-box">
 		<p id="file-test-txt">Loading...</p>
+
+		<p id="images-test">Images...</p>
 	</div>
 	</div>
+	<!-- END: BODY CONTENT DIV -->
 </div>
-<!-- END: BODY CONTENT DIV -->
+
 
 <script>
 	$(function(){
@@ -64,6 +69,50 @@
 				console.log(error);
 			});
 		};
+
+		function setTitleWithElement(elementId, titleElementId) {
+			let title = document.getElementById(elementId).innerHTML; 
+			document.title = title;
+			document.getElementById(titleElementId).innerHTML = title;
+			document.getElementById(elementId).remove();
+		}
+
+		// load all images in imageDirectoryPath and append it to imageContainer 
+		function getImageDirectoryAndLoadImages(imageDirectoryPath, imageContainer) {
+			var imagePaths = [];
+
+			$.get(imageDirectoryPath)
+			.done(function(result) {
+				// get image paths from index page 
+				let html = $.parseHTML(result);
+				$.each(html, function( i, el ) {
+					if (el.tagName == "UL") {
+						let listItems = $(el).find("li");
+						$.each(listItems, function(i, item) {
+							let imagePath = $("a", item).attr('href');
+							imagePaths.push(imagePath);
+						});
+					}
+				});
+
+				// clear html of div
+				document.getElementById(imageContainer).innerHTML = "";
+
+				// load each image and add to imageContainer 
+				$.each(imagePaths, function(i, imagePath) {
+					// prepend directory path 
+					let fullImagePath = imageDirectoryPath + "/" + imagePath;
+					console.log(fullImagePath);
+
+					$('<img src="'+ fullImagePath +'">').on('load', function() {
+						$(this).width(100).appendTo("#" + imageContainer);
+					});
+				});
+			})
+			.fail(function(error){
+				console.log(error);
+			});
+		};
 		
 		// load the template's html sections, then replace the content body with this page's content 
 		// #template-full 
@@ -73,6 +122,7 @@
 			replaceDivWithHTMLFile("#template-banner", "/template/banner.html");
 			replaceDivWithHTMLFile("#template-navbar", "/template/navbar.html");
 			replaceDivWithHTMLFile("#template-content", "/template/content.html", function() {
+				setTitleWithElement("page-title", "content-title-placeholder");
 				replaceDivWithHTMLElement("#content-body-placeholder", "#body-content");
 			});
 			replaceDivWithHTMLFile("#template-footer", "/template/footer.html");
@@ -84,6 +134,10 @@
 		getUrlAndSet(
 			"https://dl.dropbox.com/scl/fi/us6gn43hurmry2nlbcw3u/test.txt?rlkey=620tf3x71becx5d4g357khbee&e=1&st=vgis3gsx&dl=1",
 			"file-test-txt");
+
+		getImageDirectoryAndLoadImages(
+			"/images/main/test",
+			"images-test");
 	});
 </script>
 
