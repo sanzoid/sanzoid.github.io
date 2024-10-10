@@ -1,9 +1,42 @@
+/**************************** START: BANNER ***************************************/
+
+div#banner {
+	margin: 0px auto 5px auto; /* bottom margin to account for banner shadow */
+	width: 921px;
+	max-width: 100%;
+	height: 150px;
+
+	background-image: url('/images/main/banners/banner_test.png');
+	background-repeat: no-repeat;
+	background-position: center;
+
+	position: relative;
+}
+
+div#banner-title {
+	position: absolute;
+	bottom: -15px;
+	margin: 0px auto;
+	width: 921px;
+	max-width: 100%;
+}
+
+div#banner-title > h1 {
+	color: #fffefa;
+	text-align: center;
+	font-family: "Jua", sans-serif;
+	font-size: 50px;
+	margin: 0px;
+}
+
+/**************************** END: BANNER ***************************************/
+
 /**************************** START: NAVBAR ***************************************/
 
 div#navbar-container {
 	width: 100%;
 	max-width: 931px;
-	margin:  auto;
+	margin: auto;
 }
 
 div#navbar {	/*list container */
@@ -13,7 +46,7 @@ div#navbar {	/*list container */
 
 
 div#navbar ul.menu {	/* list */ 
-	w/*idth: 100%;
+	/*width: 100%;
 	max-width: 931px;*/
 	margin: 0 auto;
 	padding: 0;
@@ -88,8 +121,20 @@ div#navbar ul.menu li.home .home-logo {	/* home logo */
 /**************************** END: NAVBAR ***************************************/
  
 /**************************** START: CONTENT ***************************************/
+
+div#content-and-title-container {
+	margin: 50px auto 50px auto;
+	max-width: 931px;
+}
+
+h1#content-title-placeholder {
+	font-family: "Jua", sans-serif;
+	margin: 0;
+	color: #424242;
+}
+
 div#content, div#footer {
-	margin: 50px auto;
+	margin: 0px auto 50px auto;
 	max-width: 931px;
 
   	color: #424242;
