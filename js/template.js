@@ -96,20 +96,17 @@ $(function(){
 
 	function loadTemplate() {
 		// load the template's html sections, then replace the content body with this page's content 
-		// #template-full 
 		//	#template-<section> 
-		//   #body-placeholder 
-		replaceDivWithHTMLFile("#template-full", "/template/template.html", function() {
-			replaceDivWithHTMLFile("#template-banner", "/template/banner.html");
-			replaceDivWithHTMLFile("#template-navbar", "/template/navbar.html");
-			replaceDivWithHTMLFile("#template-content", "/template/content.html", function() {
-				setTitleWithElement("page-title", "content-title-placeholder");
-				replaceDivWithHTMLElement("#content-body-placeholder", "#body-content");
-			});
-			replaceDivWithHTMLFile("#template-footer", "/template/footer.html");
-			replaceDivWithHTMLFile("#template-corners", "/template/corners.html", function() {
-				setLastModifiedOn("corner-bottom-left"); 
-			});
+		//   #content-body-placeholder 
+		replaceDivWithHTMLFile("#template-banner", "/template/sections/banner.html");
+		replaceDivWithHTMLFile("#template-navbar", "/template/sections/navbar.html");
+		replaceDivWithHTMLFile("#template-content", "/template/sections/content.html", function() {
+			setTitleWithElement("page-title", "content-title-placeholder");
+			replaceDivWithHTMLElement("#content-body-placeholder", "#body-content");
+		});
+		replaceDivWithHTMLFile("#template-footer", "/template/sections/footer.html");
+		replaceDivWithHTMLFile("#template-corners", "/template/sections/corners.html", function() {
+			setLastModifiedOn("corner-bottom-left"); 
 		});
 
 		getUrlAndSet(
