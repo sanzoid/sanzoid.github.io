@@ -109,6 +109,7 @@ div#navbar ul.menu li.home .home-logo {	/* home logo */
 	position: absolute;
 	z-index: 100;
 	left: 50%;	/* position it in the middle. */
+	/*transform: translate(-50%, -50%);*/
 	margin-left: -25px;	/* half of width */
 	margin-top: -30px;	/* move it up a bit to center  */
 	width: 50px;
@@ -131,6 +132,7 @@ h1#content-title-placeholder {
 	font-family: "Jua", sans-serif;
 	margin: 0;
 	color: #424242;
+	text-align: center;
 }
 
 div#content, div#footer {
@@ -167,4 +169,53 @@ div#aboutme > h1, div#contactinfo > h1, div#handles > h1 {
 }
 
 /**************************** END: FOOTER ***************************************/
+
+/**************************** START: CORNERS ***************************************/
+
+/*div#corners {
+	margin-top: 50px;
+	
+}*/
+
+div#corners div.corner {
+	font-family: "Jua";
+	font-size: 10px;
+	display: inline-block;
+	position: absolute;
+	padding: 2px 5px;
+	/*margin: 0;*/
+	text-align: center;
+	text-transform: lowercase;
+
+	margin: 4px;
+	color: #424242;
+	background-color: #fffefa;
+	border-style: dashed;
+	border-color: #424242;
+	border-width: 1px;
+	border-radius: 0.5em;
+	box-shadow: 0 0 0 2px #fffefa, 0 0 0 3px #424242;
+}
+
+div.corner-top {
+	top: 0;
+}
+
+div.corner-bottom {
+	bottom: 0;
+}
+
+div.corner-left {
+	left: 0;
+}
+
+div.corner-right {
+	right: 0;
+}
+
+div.corner-middle {
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+/**************************** END: CORNERS ***************************************/
 
