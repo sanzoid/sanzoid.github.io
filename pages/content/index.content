@@ -1,5 +1,5 @@
 <!-- [TEMPLATE] TITLE CONTENT DIV - the title inside will replace #content-title-placeholder in the template -->
-<div id="page-title">index.html</div>
+<div id="page-title">Hello World</div>
 
 <div id="body-content">
 
